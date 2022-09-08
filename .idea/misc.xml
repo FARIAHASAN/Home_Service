@@ -7,10 +7,13 @@
         <entry key="app/src/main/res/drawable/round_back_dark_blue5_15.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/round_back_submit.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/signup.xml" value="0.1795" />
+        <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.26875" />
+        <entry key="app/src/main/res/layout/activity_forget_password2.xml" value="0.2546875" />
         <entry key="app/src/main/res/layout/activity_home_screen.xml" value="0.1425925925925926" />
-        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.2851806640625001" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24644592285156253" />
         <entry key="app/src/main/res/layout/activity_otpverification.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_set_new_password.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="app/src/main/res/menu/manu_layout.xml" value="0.25" />
       </map>

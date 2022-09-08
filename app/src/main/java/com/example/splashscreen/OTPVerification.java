@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,16 +21,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class OTPVerification extends AppCompatActivity {
+
+    FirebaseFirestore fStore ;
+    String userId;
+    FirebaseAuth fAuth;
     private final TextWatcher textWatcher =new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -72,6 +86,7 @@ public class OTPVerification extends AppCompatActivity {
     private EditText otpEt1,otpEt2,otpEt3,otpEt4,otpEt5,otpEt6;
     private TextView resendBtn;
     String getotpbackend;
+    public static  final  String TAG="TAG";
 
     //true after every 60seconds
     private boolean resendEnable=false;
@@ -80,6 +95,10 @@ public class OTPVerification extends AppCompatActivity {
     private int resendTime = 60;
 
     private int selectedETPosition=0;
+
+    //firebase database
+
+    DatabaseReference root = FirebaseDatabase.getInstance().getReference("users");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,9 +119,27 @@ public class OTPVerification extends AppCompatActivity {
         final TextView otpMobile =findViewById(R.id.otpMobile);
 
 
+        fAuth=FirebaseAuth.getInstance();
+        fStore= FirebaseFirestore.getInstance();
+
+      // if(fAuth.getCurrentUser()!=null){
+           // startActivity(new Intent(getApplicationContext(),HomeScreen.class));
+           // finish();
+           // Toast.makeText(OTPVerification.this,"User already exists",Toast.LENGTH_SHORT).show();
+      // }
+
+
+
+
         //getting email and mobile from register activity through intent
+        String whatToDo;
         final String getEmail =getIntent().getStringExtra("email");
         final String getMobile =getIntent().getStringExtra("mobile");
+        final String getPassword =getIntent().getStringExtra("password");
+        final String getFullName =getIntent().getStringExtra("fullname");
+        //for forget password activity
+        whatToDo =getIntent().getStringExtra("whatToDo");
+
         getotpbackend=getIntent().getStringExtra("backendotp");
 
 
@@ -163,21 +200,48 @@ public class OTPVerification extends AppCompatActivity {
             public void onClick(View v) {
                 final String generateOtp=otpEt1.getText().toString()+otpEt2.getText().toString()+otpEt3.getText().toString()+otpEt4.getText().toString()+otpEt5.getText().toString()+otpEt6.getText().toString();
                 if(generateOtp.length()==6){
+
                     //handle your otp varification here
                     PhoneAuthCredential  phoneAuthCredential = PhoneAuthProvider.getCredential(getotpbackend,generateOtp);
                     FirebaseAuth.getInstance().signInWithCredential( phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful())
-                            {    Toast.makeText(OTPVerification.this,"OTP  verified",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
+                            {
+                               if(whatToDo.equals("updateData"))
+                               {
+                                   Intent intent = new Intent(OTPVerification.this, SetNewPassword.class);
+                                   intent.putExtra("mobile", getMobile);
+                                   startActivity(intent);
+                                   finish();
+
+                               }
+                                else
+                                {
+                                    Toast.makeText(OTPVerification.this, "OTP  verified", Toast.LENGTH_SHORT).show();
+                                    // save data in database
+                                    String key = root.push().getKey();
+                                    HashMap<String, String> userMap = new HashMap<>();
+
+                                    userMap.put("name", getFullName);
+                                    userMap.put("email", getEmail);
+                                    userMap.put("mobile", getMobile);
+                                    userMap.put("password", getPassword);
+                                    root.child(getMobile).setValue(userMap);
+
+
+                                    //go to homeScreen
+                                    Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                }
                             }
                             else{
                                 Toast.makeText(OTPVerification.this,"Enter the correct OTP",Toast.LENGTH_SHORT).show();
                             }
                         }
+
+
                     });
 
 
@@ -186,6 +250,7 @@ public class OTPVerification extends AppCompatActivity {
                     Toast.makeText(OTPVerification.this,"Please enter all numbers",Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
 
 
