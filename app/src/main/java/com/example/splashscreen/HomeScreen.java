@@ -24,9 +24,9 @@ public class HomeScreen extends AppCompatActivity {
         getSupportActionBar().hide();
         //**
         //ANOTHER WAY
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.show();
-        actionbar.setDisplayShowTitleEnabled(false);
+               ActionBar actionbar = getSupportActionBar();
+              // actionbar.show();
+               actionbar.setDisplayShowTitleEnabled(false);
         //**
        // change action_bar colour
         actionbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.main_colour)));
@@ -50,4 +50,5 @@ public class HomeScreen extends AppCompatActivity {
         }
         return true;
     }
+
 }
