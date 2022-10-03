@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "623746764057",
+    "firebase_url": "https://splashscreen-69bdd-default-rtdb.firebaseio.com",
     "project_id": "splashscreen-69bdd",
     "storage_bucket": "splashscreen-69bdd.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "623746764057-fhff8mt25fcd9lr126lret7lh3cfga73.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.splashscreen",
+            "certificate_hash": "4ec260b404d25ee261869f5884db4be936bee439"
+          }
+        },
         {
           "client_id": "623746764057-jdcfni1ht72k203qh006bebek63211sm.apps.googleusercontent.com",
           "client_type": 3

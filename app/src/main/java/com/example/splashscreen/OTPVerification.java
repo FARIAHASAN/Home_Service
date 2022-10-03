@@ -98,7 +98,8 @@ public class OTPVerification extends AppCompatActivity {
 
     //firebase database
 
-    DatabaseReference root = FirebaseDatabase.getInstance().getReference("users");
+    DatabaseReference root = FirebaseDatabase.getInstance().getReference("customer");
+    DatabaseReference root1 = FirebaseDatabase.getInstance().getReference("serviceProvider");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,7 +116,7 @@ public class OTPVerification extends AppCompatActivity {
 
         resendBtn=findViewById(R.id.resendBtn);
         final Button verifyBtn =findViewById(R.id.verifyBtn);
-        final TextView otpEmail =findViewById(R.id.otpEmail);
+
         final TextView otpMobile =findViewById(R.id.otpMobile);
 
 
@@ -137,6 +138,8 @@ public class OTPVerification extends AppCompatActivity {
         final String getMobile =getIntent().getStringExtra("mobile");
         final String getPassword =getIntent().getStringExtra("password");
         final String getFullName =getIntent().getStringExtra("fullname");
+        final String userType =getIntent().getStringExtra("userType");
+
         //for forget password activity
         whatToDo =getIntent().getStringExtra("whatToDo");
 
@@ -144,7 +147,7 @@ public class OTPVerification extends AppCompatActivity {
 
 
         //setting email and mobile to Textview
-        otpEmail.setText(getEmail);
+
         otpMobile.setText(getMobile);
 
         otpEt1.addTextChangedListener(textWatcher);
@@ -220,20 +223,49 @@ public class OTPVerification extends AppCompatActivity {
                                 {
                                     Toast.makeText(OTPVerification.this, "OTP  verified", Toast.LENGTH_SHORT).show();
                                     // save data in database
-                                    String key = root.push().getKey();
-                                    HashMap<String, String> userMap = new HashMap<>();
+                                    if(userType.equals("Customer")) {
+                                        String key = root.push().getKey();
+                                        HashMap<String, String> userMap = new HashMap<>();
 
-                                    userMap.put("name", getFullName);
-                                    userMap.put("email", getEmail);
-                                    userMap.put("mobile", getMobile);
-                                    userMap.put("password", getPassword);
-                                    root.child(getMobile).setValue(userMap);
+                                        userMap.put("name", getFullName);
+                                        userMap.put("email", getEmail);
+                                        userMap.put("mobile", getMobile);
+                                        userMap.put("password", getPassword);
+                                        root.child(getMobile).setValue(userMap);
 
 
-                                    //go to homeScreen
-                                    Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
+                                        //go to homeScreen
+                                        Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                    }
+                                    else
+                                    {
+//                                        String key = root.push().getKey();
+//                                        HashMap<String, String> userMap = new HashMap<>();
+//
+//                                        userMap.put("name", getFullName);
+//                                        userMap.put("email", getEmail);
+//                                        userMap.put("mobile", getMobile);
+//                                        userMap.put("password", getPassword);
+//                                        root1.child(getMobile).setValue(userMap);
+//
+//
+//                                        //go to homeScreen
+//                                        Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+//                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                        startActivity(intent);
+
+                                        Intent intent = new Intent(OTPVerification.this, service_specialization.class);
+                                        intent.putExtra("mobile", getMobile);
+                                        intent.putExtra("email",  getEmail);
+                                        intent.putExtra("password",  getPassword);
+                                        intent.putExtra("fullname", getFullName);
+
+                                        startActivity(intent);
+
+
+                                    }
                                 }
                             }
                             else{

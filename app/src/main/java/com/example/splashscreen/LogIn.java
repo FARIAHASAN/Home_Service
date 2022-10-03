@@ -42,6 +42,7 @@ public class LogIn extends AppCompatActivity {
         final ImageView passwordIcon=findViewById(R.id.passwordIcon);
         final TextView ForgetPassword = findViewById(R.id.forgetPasswordBtn);
         final TextView SignUpBtn = findViewById(R.id.signUpBtn);
+
         passwordIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

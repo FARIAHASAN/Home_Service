@@ -14,8 +14,11 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,11 +37,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.concurrent.TimeUnit;
 
 public class SignUp extends AppCompatActivity {
+    private Spinner spinner;
+
+    ArrayAdapter<String>arrayAdapter;
     private boolean passwordShowing = false;
     private boolean conPasswordShowing = false;
+    String[] usertype={"Customer","Service provider"};
 
     FirebaseFirestore fStore ;
-    String userId;
+    String userId,userType="Customer";
     FirebaseAuth fAuth;
 
 
@@ -50,6 +57,27 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
+
+        //spinner work
+        spinner=findViewById(R.id.user_spinner);
+        arrayAdapter=new ArrayAdapter<String>(SignUp.this, android.R.layout.simple_spinner_dropdown_item,usertype);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                     //   Toast.makeText(SignUp.this,"You selected"+parent.getItemAtPosition(position),Toast.LENGTH_SHORT).show();
+                        userType= (String) parent.getItemAtPosition(position);
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+        );
         final EditText email = findViewById(R.id.emailET);
         final EditText mobile = findViewById(R.id.mobileET);
         final EditText  password = findViewById(R.id.passwordET);
@@ -178,63 +206,132 @@ public class SignUp extends AppCompatActivity {
                           // Toast.makeText(SignUp.this,"User already exists",Toast.LENGTH_SHORT).show();
                           // return;
                        // }
-                        root.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                //Check if phone number is not registered before
-                                if(snapshot.hasChild(Mobile))
-                                {
-                                    Toast.makeText(SignUp.this,"User already exists",Toast.LENGTH_SHORT).show();
+                         if(userType.equals("Customer")) {
+                             root.child("customer").addListenerForSingleValueEvent(new ValueEventListener() {
+                                 @Override
+                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                     //Check if phone number is not registered before
+                                     if (snapshot.hasChild(Mobile)) {
+                                         Toast.makeText(SignUp.this, "User already exists", Toast.LENGTH_SHORT).show();
 
-                                }
-                                else
-                                {
-                                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                                            "+88"+ mobile.getText().toString(), 60, TimeUnit.SECONDS, SignUp.this,
-                                            new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                                                @Override
-                                                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                     } else {
+                                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                                 "+88" + mobile.getText().toString(), 60, TimeUnit.SECONDS, SignUp.this,
+                                                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                                                     @Override
+                                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
-                                                }
+                                                     }
 
-                                                @Override
-                                                public void onVerificationFailed(@NonNull FirebaseException e) {
-                                                    Toast.makeText(SignUp.this,e.getMessage(),Toast.LENGTH_SHORT).show();
-                                                }
+                                                     @Override
+                                                     public void onVerificationFailed(@NonNull FirebaseException e) {
+                                                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                     }
 
-                                                @Override
-                                                public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                                     @Override
+                                                     public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
 
 
-
-                                                    //opening OTP Varification activity along with mobile and Email
-                                                    Intent intent = new Intent(SignUp.this, OTPVerification.class);
-                                                    intent.putExtra("mobile", Mobile);
-                                                    intent.putExtra("email", Email);
-                                                    intent.putExtra("password", Password);
-                                                    intent.putExtra("fullname", FullName);
-                                                    intent.putExtra("backendotp", backendotp);
-                                                    intent.putExtra("whatToDo","nothing");
-
-
-                                                    startActivity(intent);
-
-                                                }
-                                            }
-
-                                    );
+                                                         //opening OTP Varification activity along with mobile and Email
+                                                         Intent intent = new Intent(SignUp.this, OTPVerification.class);
+                                                         intent.putExtra("mobile", Mobile);
+                                                         intent.putExtra("email", Email);
+                                                         intent.putExtra("password", Password);
+                                                         intent.putExtra("fullname", FullName);
+                                                         intent.putExtra("backendotp", backendotp);
+                                                         intent.putExtra("whatToDo", "nothing");
+                                                         intent.putExtra("userType", userType);
 
 
-                                    final String getMobileTXT = mobile.getText().toString();
-                                    final String getEmailTXT = email.getText().toString();
-                                }
-                            }
+                                                         startActivity(intent);
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                                                     }
+                                                 }
 
-                            }
-                        });
+                                         );
+
+
+                                         final String getMobileTXT = mobile.getText().toString();
+                                         final String getEmailTXT = email.getText().toString();
+                                     }
+                                 }
+
+                                 @Override
+                                 public void onCancelled(@NonNull DatabaseError error) {
+
+                                 }
+                             });
+                         }
+
+                        //ai porjonto
+                        else
+                         {
+                             root.child("serviceProvider").addListenerForSingleValueEvent(new ValueEventListener() {
+                                 @Override
+                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                     //Check if phone number is not registered before
+                                     if (snapshot.hasChild(Mobile)) {
+                                         Toast.makeText(SignUp.this, "User already exists", Toast.LENGTH_SHORT).show();
+
+                                     } else {
+//                                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
+//                                                 "+88" + mobile.getText().toString(), 60, TimeUnit.SECONDS, SignUp.this,
+//                                                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+//                                                     @Override
+//                                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+//
+//                                                     }
+//
+//                                                     @Override
+//                                                     public void onVerificationFailed(@NonNull FirebaseException e) {
+//                                                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                                                     }
+//
+//                                                     @Override
+//                                                     public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+//
+//
+//
+//                                                               //opening OTP Varification activity along with mobile and Email
+//                                                               Intent intent = new Intent(SignUp.this, OTPVerification.class);
+//                                                               intent.putExtra("mobile", Mobile);
+//                                                               intent.putExtra("email", Email);
+//                                                               intent.putExtra("password", Password);
+//                                                               intent.putExtra("fullname", FullName);
+//                                                               intent.putExtra("backendotp", backendotp);
+//                                                               intent.putExtra("whatToDo", "nothing");
+//                                                               intent.putExtra("userType", userType);
+//
+//
+//                                                               startActivity(intent);
+//
+//
+//                                                     }
+//                                                 }
+//
+//                                         );
+
+
+                                         Intent intent = new Intent(SignUp.this, service_specialization.class);
+                                         intent.putExtra("mobile", Mobile);
+                                         intent.putExtra("email",  Email);
+                                         intent.putExtra("password",  Password);
+                                         intent.putExtra("fullname", FullName);
+
+                                         startActivity(intent);
+
+                                         final String getMobileTXT = mobile.getText().toString();
+                                         final String getEmailTXT = email.getText().toString();
+                                     }
+                                 }
+
+                                 @Override
+                                 public void onCancelled(@NonNull DatabaseError error) {
+
+                                 }
+                             });
+
+                         }
 
 
 

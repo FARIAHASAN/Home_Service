@@ -26,24 +26,9 @@
         android:text="Please enter your code that we have sent to your"
         android:textColor="#66000000" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="Email Address"
-        android:textColor="#66000000"
-        android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/otpEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="test@gmail.com"
-        android:textColor="#CC000000"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+
+
 
     <TextView
         android:layout_width="wrap_content"

@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".HomeScreen">
+    tools:context=".HomeScreen"
+    android:id="@+id/drawerlayout"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/navigationview"-->
+<!--        app:menu="@menu/manu_layout"-->
+<!--        android:layout_gravity="start"/>-->
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-    <androidx.appcompat.widget.Toolbar
+
+   <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_colour"
+        android:background="@color/white"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:logo="@drawable/ic_menuicon"
-        app:title="Servicefy"
-        app:titleMarginStart="40dp"
-        tools:ignore="MissingConstraints" />
+       app:titleMarginStart="40dp"
+       tools:ignore="MissingConstraints" />
+        <!-- aikhane image chilo-->
+
+        <!--app:logo="@drawable/ic_menuicon"-->
 
 
         //care Section
@@ -36,8 +52,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintVertical_bias="0.102" />
+            app:layout_constraintVertical_bias="0.102"
+         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
 
         <TextView
         android:id="@+id/textView2"
@@ -77,6 +94,7 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/Seniorid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -110,6 +128,7 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/babySittingId"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -180,6 +199,7 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/Signid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -213,6 +233,7 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/specialid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -280,6 +301,7 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/oxygenId"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -289,7 +311,6 @@
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="false"
-                        android:layout_marginTop="10dp"
                         app:srcCompat="@drawable/ic_cylinder" />
 
                     <TextView
@@ -314,6 +335,7 @@
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/physioId"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -323,7 +345,6 @@
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="false"
-                        android:layout_marginTop="10dp"
                         app:srcCompat="@drawable/ic_physiotherapy" />
 
                     <TextView
@@ -355,12 +376,13 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="309dp"
+                android:layout_height="144dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1">
 
                 <RelativeLayout
+                    android:id="@+id/PressureId"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -393,6 +415,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </ScrollView>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
