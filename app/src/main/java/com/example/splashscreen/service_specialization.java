@@ -51,7 +51,7 @@ public class service_specialization extends AppCompatActivity {
     EditText pdf;
     Button submitPdf;
     private Spinner spinner;
-    String Service,pdfName,pdfUri,getEmail,getMobile,getPassword , getFullName,getDescription="hello";
+    String Service,pdfName,pdfUri,getEmail,getMobile,getPassword , getFullName,getDescription="hello",fee;
     //for image upload
     ImageView img;
     Button browse, upload;
@@ -118,6 +118,39 @@ public class service_specialization extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         //   Toast.makeText(SignUp.this,"You selected"+parent.getItemAtPosition(position),Toast.LENGTH_SHORT).show();
                         Service=(String)parent.getItemAtPosition(position);
+                        if(Service.equals("Senior Care"))
+                        {
+                            fee="800";
+                        }
+                       else if(Service.equals("Baby Sitting"))
+                        {
+                            fee="1000";
+                        }
+                        else if(Service.equals("Sign Language"))
+                        {
+                            fee="1200";
+                        }
+                        else if(Service.equals("Special Child"))
+                        {
+                            fee="1500";
+                        }
+                        else if(Service.equals("Cylinder Provider"))
+                        {
+                            fee="1300";
+                        }
+                        else if(Service.equals("PhysioTherapy"))
+                        {
+                            fee="1500";
+                        }
+                        else if(Service.equals("Diabetic and pressure measure"))
+                        {
+                            fee="1400";
+                        }
+
+
+
+
+
 
 
                     }
@@ -257,6 +290,7 @@ public class service_specialization extends AppCompatActivity {
                                 userMap.put("Image",image);
                                 userMap.put("Description",getDescription);
                                 userMap.put("ServiceType",Service);
+                                userMap.put("Fee",fee);
                                 databaseReference.child(getMobile).setValue(userMap);
                                 Toast.makeText(service_specialization.this,"Details are uploaded",Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();

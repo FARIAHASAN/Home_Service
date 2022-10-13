@@ -4,22 +4,31 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3235" />
+        <entry key="app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.2105" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.19" />
         <entry key="app/src/main/res/drawable/ic_login.xml" value="0.19" />
+        <entry key="app/src/main/res/drawable/ic_logout.xml" value="0.2105" />
         <entry key="app/src/main/res/drawable/ic_menuicon.xml" value="0.19" />
         <entry key="app/src/main/res/drawable/round_back_dark_blue5_15.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/round_back_submit.xml" value="0.1795" />
+        <entry key="app/src/main/res/drawable/selector.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/signup.xml" value="0.1795" />
+        <entry key="app/src/main/res/layout/activity_baby_sitting_page.xml" value="0.32083333333333336" />
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.26875" />
         <entry key="app/src/main/res/layout/activity_forget_password2.xml" value="0.2546875" />
+        <entry key="app/src/main/res/layout/activity_google_map.xml" value="0.175" />
         <entry key="app/src/main/res/layout/activity_home_screen.xml" value="0.27553024171464613" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.2851806640625001" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24644592285156253" />
+        <entry key="app/src/main/res/layout/activity_more.xml" value="0.175" />
+        <entry key="app/src/main/res/layout/activity_orders.xml" value="0.175" />
         <entry key="app/src/main/res/layout/activity_otpverification.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_senior_care_page.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/layout/activity_service_specialization.xml" value="0.26481481481481484" />
         <entry key="app/src/main/res/layout/activity_set_new_password.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_baby_sitting_fragment.xml" value="0.3067708333333333" />
+        <entry key="app/src/main/res/layout/fragment_details.xml" value="0.32083333333333336" />
         <entry key="app/src/main/res/layout/fragment_senior_fragment.xml" value="0.3556501035337095" />
         <entry key="app/src/main/res/layout/singlerowdesign.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/menu/manu_layout.xml" value="0.25" />

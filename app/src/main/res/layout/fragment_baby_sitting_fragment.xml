@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".babySitting_fragment"
+    android:orientation="vertical"
+    android:gravity="center"
+
+    >
+
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_babysitting"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Baby Sitting "
+        android:textColor="#A4224F80"
+        android:textStyle="bold"
+        android:textSize="30dp"
+
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Baby Sitting will help your baby to feel safe and secure and give them a sense of belonging when you're not around. "
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="@color/main_colour"
+
+        >
+
+    </TextView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       >
+        <TextView
+
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Service Providers"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25dp"
+
+            >
+
+        </TextView>
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/recview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

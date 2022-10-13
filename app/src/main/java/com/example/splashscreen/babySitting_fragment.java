@@ -3,6 +3,7 @@ package com.example.splashscreen;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,13 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
-
-public class senior_fragment extends Fragment {
+public class babySitting_fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,13 +30,13 @@ public class senior_fragment extends Fragment {
 
 
 
-    public senior_fragment() {
+    public babySitting_fragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static senior_fragment newInstance(String param1, String param2) {
-        senior_fragment fragment = new senior_fragment();
+    public static babySitting_fragment newInstance(String param1, String param2) {
+        babySitting_fragment fragment = new babySitting_fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -49,6 +48,8 @@ public class senior_fragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -59,22 +60,23 @@ public class senior_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view= inflater.inflate(R.layout.fragment_senior_fragment, container, false);
+        View view= inflater.inflate(R.layout.fragment_baby_sitting_fragment, container, false);
         recview=(RecyclerView)view.findViewById(R.id.recview);
+
+
         recview.setLayoutManager(new LinearLayoutManager(getContext()));
         FirebaseRecyclerOptions<model> options =
                 new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("serviceProvider").orderByChild("ServiceType").equalTo("Senior Care"), model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("serviceProvider").orderByChild("ServiceType").equalTo("Baby Sitting"), model.class)
                         .build();
 
         adapter= new myadapter(options);
         recview.setAdapter(adapter);
 
-       return view;
+        return view;
 
 
     }
-
     @Override
     public void onStart() {
         super.onStart();

@@ -10,8 +10,11 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.FirebaseException;
@@ -27,6 +30,11 @@ import java.util.concurrent.TimeUnit;
 
 public class LogIn extends AppCompatActivity {
     private boolean passwordShowing = false;
+    private Spinner spinner;
+
+    ArrayAdapter<String> arrayAdapter;
+    String[] usertype={"Customer","Service provider"};
+    String userType="Customer";
 
     DatabaseReference root = FirebaseDatabase.getInstance().getReferenceFromUrl("https://splashscreen-69bdd-default-rtdb.firebaseio.com/");
     @Override
@@ -35,6 +43,26 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
+        //spinner work
+        spinner=findViewById(R.id.user_spinner);
+        arrayAdapter=new ArrayAdapter<String>(LogIn.this, android.R.layout.simple_spinner_dropdown_item,usertype);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        //   Toast.makeText(SignUp.this,"You selected"+parent.getItemAtPosition(position),Toast.LENGTH_SHORT).show();
+                        userType= (String) parent.getItemAtPosition(position);
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+        );
 
         final EditText mobileET = findViewById(R.id.mobileET);
         final EditText passwordET=findViewById(R.id.passwordET);
@@ -98,7 +126,17 @@ public class LogIn extends AppCompatActivity {
                     return;
 
                 }
-                root.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                String whichUserType;
+                if(userType.equals("Customer"))
+                {
+                    whichUserType = "customer";
+
+                }
+                else
+                {
+                    whichUserType = "serviceProvider";
+                }
+                root.child(whichUserType).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         //Check if phone number is not registered before
@@ -106,9 +144,17 @@ public class LogIn extends AppCompatActivity {
                         {
 
                             final String getPassword =snapshot.child(Mobile).child("password").getValue(String.class);
+                            final String getMobile =snapshot.child(Mobile).child("mobile").getValue(String.class);
+                            final String getName =snapshot.child(Mobile).child("name").getValue(String.class);
+                            final String getEmail =snapshot.child(Mobile).child("email").getValue(String.class);
                             if(getPassword.equals(Password)) {
+                                //session create
+                                SessionManager session= new SessionManager(LogIn.this);
+                                session.createLoginSession(getName,getMobile,getEmail);
 
-                                Toast.makeText(LogIn.this, "You have logged in", Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(LogIn.this, "Hello "+getName+" !", Toast.LENGTH_SHORT).show();
+
                                 Intent intent = new Intent(LogIn.this, HomeScreen.class);
                                 startActivity(intent);
                             }
@@ -133,6 +179,8 @@ public class LogIn extends AppCompatActivity {
 
                     }
                 });
+
+
             }
         });
 

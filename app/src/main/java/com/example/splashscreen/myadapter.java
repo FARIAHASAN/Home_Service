@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -29,7 +30,17 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
              holder.nametext.setText(model.getName());
              holder.mobiletext.setText(model.getMobile());
              holder.emailtext.setText(model.getEmail());
+
              Glide.with(holder.img1.getContext()).load(model.getImage()).into(holder.img1);
+
+
+        holder.img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity=(AppCompatActivity)view.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new detailsFragment(model.getName(),model.getEmail(),model.getMobile(),model.getDescription(),model.getImage(),model.getServiceType())).addToBackStack(null).commit();
+            }
+        });
 
 
 

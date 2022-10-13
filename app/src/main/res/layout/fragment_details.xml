@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detailsFragment"
+
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         android:gravity="center_horizontal"
+        android:orientation="vertical"
+
+
+        >
+
+        <ImageView
+            android:id="@+id/imagegholder"
+            android:layout_marginTop="40dp"
+            android:layout_width="240dp"
+            android:layout_height="228dp"
+            android:src="@color/common_google_signin_btn_text_dark_disabled"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/name"
+            android:text="Candidate Name"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/mobile"
+            android:text="Candidate phone"
+            android:textSize="18dp"
+            android:textColor="#000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/email"
+            android:text="Candidate Email"
+            android:textSize="18dp"
+            android:textColor="#000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/description"
+            android:text="Candidate Description"
+            android:textSize="18dp"
+            android:textColor="#000"/>
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:orientation="vertical"
+         android:layout_marginLeft="10dp"
+
+         >
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="25dp"
+             android:text="Our Pricing"
+             android:textSize="25sp"
+             android:textStyle="bold"
+             android:textColor="#000"
+             android:gravity="center"
+             android:layout_marginLeft="20dp"
+             >
+         </TextView>
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+
+             >
+         <RadioButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="For 1 day"
+             android:id="@+id/radio1day"
+             android:textSize="20dp">
+
+         </RadioButton>
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="5dp"
+                 android:text="price "
+                 android:id="@+id/price1day"
+                 android:textSize="20dp"
+                 android:textColor="@color/black"
+                 >
+
+             </TextView>
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             >
+             <RadioButton
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="for 1 week"
+                 android:id="@+id/radio1week"
+                 android:textSize="20dp">
+
+             </RadioButton>
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="5dp"
+                 android:text="price "
+                 android:id="@+id/price1week"
+                 android:textSize="20dp"
+                 android:textColor="@color/black"
+                 >
+
+             </TextView>
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             >
+             <RadioButton
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="for 1 month"
+                 android:id="@+id/radio1month"
+                 android:textSize="20dp">
+
+             </RadioButton>
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="5dp"
+                 android:text="price "
+                 android:id="@+id/price1month"
+                 android:textSize="20dp"
+                 android:textColor="@color/black"
+                 >
+
+             </TextView>
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             >
+             <RadioButton
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="for 6 months"
+                 android:id="@+id/radio6month"
+                 android:textSize="20dp">
+
+             </RadioButton>
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="5dp"
+                 android:text="price "
+                 android:id="@+id/price6month"
+                 android:textSize="20dp"
+                 android:textColor="@color/black"
+                 >
+
+             </TextView>
+         </LinearLayout>
+
+     </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="fee"-->
+<!--            android:textStyle="bold"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:textSize="20dp">-->
+
+<!--        </TextView>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/fee"-->
+<!--            android:text=""-->
+<!--            android:textStyle="bold"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:textSize="20dp"-->
+<!--            android:layout_marginLeft="20dp">-->
+
+<!--        </TextView>-->
+
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--           android:layout_marginLeft="220dp">-->
+
+<!--        </Button>-->
+
+<!--    </LinearLayout>-->
+
+</FrameLayout>

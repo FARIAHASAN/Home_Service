@@ -1,18 +1,20 @@
 package com.example.splashscreen;
 
 public class model {
-    String Description,Image,email,mobile,name,ServiceType;
+    String Description,Image,email,mobile,name,ServiceType,fee;
 
     public model() {
     }
 
-    public model(String description, String image, String email, String mobile, String name, String serviceType) {
+    public model(String description,String fee, String image, String serviceType, String email, String mobile, String name) {
         Description = description;
         Image = image;
         this.email = email;
         this.mobile = mobile;
         this.name = name;
         ServiceType = serviceType;
+        this.fee=fee;
+
     }
 
     public String getDescription() {
@@ -61,5 +63,13 @@ public class model {
 
     public void setServiceType(String serviceType) {
         ServiceType = serviceType;
+    }
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
     }
 }
