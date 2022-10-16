@@ -6,6 +6,10 @@
     tools:context=".detailsFragment"
 
     >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -28,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/name"
             android:text="Candidate Name"
             android:textSize="18dp"
@@ -38,49 +42,70 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/mobile"
             android:text="Candidate phone"
             android:textSize="18dp"
+            android:textStyle="bold"
             android:textColor="#000"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/email"
             android:text="Candidate Email"
             android:textSize="18dp"
+            android:textStyle="bold"
             android:textColor="#000"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="10sp">
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/description"
             android:text="Candidate Description"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:textColor="#000"/>
+        </LinearLayout>
 
      <LinearLayout
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_gravity="center"
+
          android:orientation="vertical"
-         android:layout_marginLeft="10dp"
+
 
          >
+
          <TextView
+
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
+             android:layout_marginLeft="125dp"
              android:layout_marginTop="25dp"
              android:text="Our Pricing"
-             android:textSize="25sp"
-             android:textStyle="bold"
              android:textColor="#000"
-             android:gravity="center"
-             android:layout_marginLeft="20dp"
-             >
+             android:textSize="25sp"
+
+             android:textStyle="bold">
+
          </TextView>
+
+         <LinearLayout
+             android:layout_marginTop="15dp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+
+
+
          <LinearLayout
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
@@ -113,6 +138,7 @@
              android:orientation="horizontal"
              >
              <RadioButton
+                 android:layout_marginLeft="25sp"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="for 1 week"
@@ -132,6 +158,10 @@
 
              </TextView>
          </LinearLayout>
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
          <LinearLayout
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
@@ -163,6 +193,7 @@
              android:orientation="horizontal"
              >
              <RadioButton
+                 android:layout_marginLeft="5sp"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="for 6 months"
@@ -182,8 +213,36 @@
 
              </TextView>
          </LinearLayout>
-
+         </LinearLayout>
      </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:id="@+id/purchase">
+         <TextView
+
+             android:textColor="@color/main_colour"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Hire me!"
+             android:textSize="20sp"
+             android:textStyle="bold"
+
+             >
+
+         </TextView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_search_24"
+                android:paddingTop="5sp">
+
+            </ImageView>
+        </LinearLayout>
+
 
 
 
@@ -233,5 +292,5 @@
 <!--        </Button>-->
 
 <!--    </LinearLayout>-->
-
+    </ScrollView>
 </FrameLayout>

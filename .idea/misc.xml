@@ -16,11 +16,13 @@
         <entry key="app/src/main/res/layout/activity_baby_sitting_page.xml" value="0.32083333333333336" />
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.26875" />
         <entry key="app/src/main/res/layout/activity_forget_password2.xml" value="0.2546875" />
+        <entry key="app/src/main/res/layout/activity_gmap.xml" value="0.26296296296296295" />
         <entry key="app/src/main/res/layout/activity_google_map.xml" value="0.175" />
         <entry key="app/src/main/res/layout/activity_home_screen.xml" value="0.27553024171464613" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.2851806640625001" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24644592285156253" />
         <entry key="app/src/main/res/layout/activity_more.xml" value="0.175" />
+        <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.2605128205128205" />
         <entry key="app/src/main/res/layout/activity_orders.xml" value="0.175" />
         <entry key="app/src/main/res/layout/activity_otpverification.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_senior_care_page.xml" value="0.25833333333333336" />

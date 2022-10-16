@@ -1,5 +1,7 @@
 package com.example.splashscreen;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -85,6 +88,14 @@ public class detailsFragment extends Fragment {
         TextView weekHolder=view.findViewById(R.id.price1week);
         TextView month1Holder=view.findViewById(R.id.price1month);
         TextView month6Holder=view.findViewById(R.id.price6month);
+       LinearLayout Purchase = view.findViewById(R.id.purchase);
+        Purchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Gmap.class);
+                getActivity().startActivity(intent);
+            }
+        });
 
          day=view.findViewById(R.id.radio1day);
         week=view.findViewById(R.id.radio1week);
@@ -98,9 +109,9 @@ public class detailsFragment extends Fragment {
         descriptionHolder.setText(description);
         if(ServiceType.equals("Baby Sitting")) {
             price1day=1000;
-            price1week=5000;
-            price1month=20000;
-            price6month=75000;
+            price1week=3000;
+            price1month=8000;
+            price6month=20000;
             //convert to string
             s1day= price1day.toString();
             s1week= price1week.toString();
@@ -233,6 +244,8 @@ public class detailsFragment extends Fragment {
         }
 
         Glide.with(getContext()).load(image).into(imgHolder);
+
+
 
 
 

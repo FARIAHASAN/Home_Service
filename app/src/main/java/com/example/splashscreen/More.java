@@ -63,6 +63,7 @@ public class More extends AppCompatActivity {
         SessionManager sessionManager = new SessionManager(this);
         HashMap<String,String>userDetails=sessionManager.getUserInfo();
         name.setText(userDetails.get(SessionManager.KEY_NAME));
+
         mobile.setText("+88"+userDetails.get(SessionManager.KEY_MOBILE));
         logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override

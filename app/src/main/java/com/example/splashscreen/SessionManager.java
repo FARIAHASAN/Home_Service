@@ -24,6 +24,7 @@ public class SessionManager {
 
 
 
+
     public SessionManager(Context context) {
         this.context = context;
         usersession=   context.getSharedPreferences("userLoginSession",Context.MODE_PRIVATE);
@@ -38,6 +39,7 @@ public class SessionManager {
      editor.putString(KEY_NAME,name);
      editor.putString(KEY_EMAIL,email);
      editor.putString(KEY_MOBILE,mobile);
+
      editor.commit();
 
     }
@@ -56,6 +58,7 @@ public class SessionManager {
     {
         editor.clear();
         editor.commit();
+        editor.apply();
 
         
     }
