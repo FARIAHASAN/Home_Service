@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -51,7 +52,7 @@ public class service_specialization extends AppCompatActivity {
     EditText pdf;
     Button submitPdf;
     private Spinner spinner;
-    String Service,pdfName,pdfUri,getEmail,getMobile,getPassword , getFullName,getDescription="hello",fee;
+    String Service,pdfName,pdfUri,getEmail,getMobile,getPassword , getFullName,getDescription="hello",fee,getGender,getDateOfBirth;
     //for image upload
     ImageView img;
     Button browse, upload;
@@ -71,6 +72,8 @@ public class service_specialization extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_specialization);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         pdf=findViewById(R.id.pdf);
         submitPdf=findViewById(R.id.submitpdf);
         //database
@@ -84,6 +87,8 @@ public class service_specialization extends AppCompatActivity {
        getMobile =getIntent().getStringExtra("mobile");
          getPassword =getIntent().getStringExtra("password");
         getFullName =getIntent().getStringExtra("fullname");
+     getGender=getIntent().getStringExtra("gender");
+     getDateOfBirth=getIntent().getStringExtra("dateOfBirth");
 
     // for adding description
       TextInputLayout DescriptionLayout = findViewById(R.id.descriptionTL);
@@ -291,6 +296,10 @@ public class service_specialization extends AppCompatActivity {
                                 userMap.put("Description",getDescription);
                                 userMap.put("ServiceType",Service);
                                 userMap.put("Fee",fee);
+                                userMap.put("Gender",getGender);
+                                userMap.put("DateOfBirth",getDateOfBirth);
+
+
                                 databaseReference.child(getMobile).setValue(userMap);
                                 Toast.makeText(service_specialization.this,"Details are uploaded",Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();

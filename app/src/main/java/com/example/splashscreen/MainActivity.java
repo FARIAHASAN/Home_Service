@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void gotoHomepage() {
 
-        startActivity(new Intent(MainActivity.this,HomeScreen.class));
+        startActivity(new Intent(MainActivity.this,LogIn.class));
 
 
 

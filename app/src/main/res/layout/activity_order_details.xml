@@ -5,16 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OrderDetails"
-    android:gravity="center_horizontal">
+    android:gravity="center"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="success"
+        android:id="@+id/success"
+        android:gravity="center_horizontal">
+
+    </TextView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your address"
-        android:id="@+id/address"
-        android:singleLine="false"
-        android:lines="2"
-        >
+
+        android:id="@+id/fail">
 
     </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/cancel">
+
+    </TextView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backtohome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:backgroundTint="#E1D0D0"
+        android:gravity="center_horizontal"
+        android:text="Back to Home Page"
+        android:textColor="@color/black">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+
 
 </LinearLayout>

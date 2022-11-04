@@ -25,6 +25,7 @@
         android:textColor="#A4224F80"
         android:textStyle="bold"
         android:textSize="30dp"
+        android:fontFamily="@font/aladin"
 
         >
 
@@ -39,6 +40,7 @@
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="@color/main_colour"
+        android:fontFamily="@font/aladin"
 
         >
 
@@ -56,6 +58,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="25dp"
+            android:fontFamily="@font/aladin"
 
             >
 

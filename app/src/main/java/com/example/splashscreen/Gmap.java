@@ -64,11 +64,21 @@ public class Gmap extends AppCompatActivity {
 
         textview= findViewById(R.id.locationfield);
         btn = findViewById(R.id.button_map);
+        String ServicePrice  = getIntent().getStringExtra("ServicePrice");
+        String ProviderName  = getIntent().getStringExtra("ProviderName");
+        String ProviderPhone  = getIntent().getStringExtra("ProviderPhone");
+        String ServiceType  = getIntent().getStringExtra("ServiceType");
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Gmap.this, OrderDetails.class);
+                Toast.makeText(Gmap.this,ServicePrice,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Gmap.this, Address_details.class);
                 intent.putExtra("address",selectedAddress);
+                intent.putExtra("ServicePrice",ServicePrice);
+                intent.putExtra("ProviderName", ProviderName);
+                intent.putExtra("ProviderPhone",  ProviderPhone );
+                intent.putExtra("ServiceType", ServiceType);
+
 
                 startActivity(intent);
 

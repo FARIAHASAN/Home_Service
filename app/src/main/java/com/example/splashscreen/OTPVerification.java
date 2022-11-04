@@ -139,6 +139,9 @@ public class OTPVerification extends AppCompatActivity {
         final String getPassword =getIntent().getStringExtra("password");
         final String getFullName =getIntent().getStringExtra("fullname");
         final String userType =getIntent().getStringExtra("userType");
+        final String getGender=getIntent().getStringExtra("gender");
+        final String getDateOfBirth=getIntent().getStringExtra("dateOfBirth");
+
 
         //for forget password activity
         whatToDo =getIntent().getStringExtra("whatToDo");
@@ -231,9 +234,14 @@ public class OTPVerification extends AppCompatActivity {
                                         userMap.put("email", getEmail);
                                         userMap.put("mobile", getMobile);
                                         userMap.put("password", getPassword);
+                                        userMap.put("gender",getGender );
+                                        userMap.put("DateOfBirth",getDateOfBirth);
+
                                         root.child(getMobile).setValue(userMap);
 
-
+                                        //session create
+                                        SessionManager session= new SessionManager(OTPVerification.this);
+                                        session.createLoginSession(getFullName,getMobile,getEmail);
                                         //go to homeScreen
                                         Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -261,6 +269,8 @@ public class OTPVerification extends AppCompatActivity {
                                         intent.putExtra("email",  getEmail);
                                         intent.putExtra("password",  getPassword);
                                         intent.putExtra("fullname", getFullName);
+                                        intent.putExtra("gender", getGender);
+                                        intent.putExtra("dateOfBirth", getDateOfBirth);
 
                                         startActivity(intent);
 

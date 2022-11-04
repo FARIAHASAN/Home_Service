@@ -27,11 +27,20 @@ public class SessionManager {
 
     public SessionManager(Context context) {
         this.context = context;
-        usersession=   context.getSharedPreferences("userLoginSession",Context.MODE_PRIVATE);
+        usersession=  context.getSharedPreferences("userLoginSession",Context.MODE_PRIVATE);
         editor=usersession.edit();
 
     }
-
+       public  void updateName(String Newname)
+       {
+           editor.putString(KEY_NAME, Newname);
+           editor.commit();
+       }
+    public  void updateMail(String Newmail)
+    {
+        editor.putString(KEY_EMAIL, Newmail);
+        editor.commit();
+    }
     public void createLoginSession(String name, String mobile, String email)
 
     {

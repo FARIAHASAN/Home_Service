@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,6 +75,15 @@ public class More extends AppCompatActivity {
                 Toast.makeText(More.this, "You are logged out", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(More.this, LogIn.class);
+                startActivity(intent);
+            }
+        });
+        //profile
+        LinearLayout profile = findViewById(R.id.user_profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(More.this, customer_profile.class);
                 startActivity(intent);
             }
         });

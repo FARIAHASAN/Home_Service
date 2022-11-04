@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer_profile"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:elevation="10dp"
+        android:background="@drawable/shadow"
+        android:padding="10dp"
+        >
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_backpage_24"
+            android:id="@+id/backpage">
+
+        </ImageView>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your profile"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/aclonica"
+            android:textColor="@color/main_colour"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:gravity="center_horizontal"
+        android:layout_marginTop="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="100dp"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_baseline_face_24"
+                android:background="#A4478CD6">
+
+            </ImageView>
+
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginEnd="10dp"
+>
+    <TextView
+        android:background="@drawable/shadow"
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/main_colour"
+        android:layout_marginBottom="10dp">
+
+
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Name"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/name"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp">
+
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow"
+        android:elevation="10dp"
+        android:text="E-mail"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/main_colour"
+        android:layout_marginBottom="10dp">
+
+
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Mail"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/email"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp">
+
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow"
+        android:elevation="10dp"
+        android:text="Your Gender"
+        android:textSize="20dp"
+        android:textColor="@color/main_colour"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp">
+
+
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="gender"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/gender"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp">
+
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow"
+        android:elevation="10dp"
+        android:text="Your Date Of Birth"
+        android:textSize="20dp"
+        android:textColor="@color/main_colour"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp">
+
+
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DOB"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/dob"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp">
+
+
+    </TextView>
+
+</LinearLayout>
+
+
+
+</LinearLayout>

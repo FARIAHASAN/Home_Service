@@ -5,6 +5,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 
 import android.os.Build;
@@ -16,6 +18,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -34,20 +38,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class SignUp extends AppCompatActivity {
-    private Spinner spinner;
+    private Spinner usertype_spinner,gender_spinner;
 
     ArrayAdapter<String>arrayAdapter;
     private boolean passwordShowing = false;
     private boolean conPasswordShowing = false;
     String[] usertype={"Customer","Service provider"};
+    String[] gendertype={"Male","Female","Other"};
 
     FirebaseFirestore fStore ;
-    String userId,userType="Customer";
+    String userId,userType="Customer",gender="Male",dateOfBirth;
     FirebaseAuth fAuth;
-
+    private DatePickerDialog datePickerDialog;
+    private Button dateButton;
 
     DatabaseReference root = FirebaseDatabase.getInstance().getReferenceFromUrl("https://splashscreen-69bdd-default-rtdb.firebaseio.com/");
 
@@ -58,12 +65,17 @@ public class SignUp extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
+         //date of birth
+        initDatePicker();
+        dateButton = findViewById(R.id.dob);
+        dateButton.setText(getTodaysDate());
+        dateOfBirth=getTodaysDate().toString();
 
-        //spinner work
-        spinner=findViewById(R.id.user_spinner);
+        //user type spinner work
+        usertype_spinner=findViewById(R.id.user_spinner);
         arrayAdapter=new ArrayAdapter<String>(SignUp.this, android.R.layout.simple_spinner_dropdown_item,usertype);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setOnItemSelectedListener(
+        usertype_spinner.setAdapter(arrayAdapter);
+        usertype_spinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -78,6 +90,26 @@ public class SignUp extends AppCompatActivity {
                     }
                 }
         );
+        //gender spinner work
+        gender_spinner=findViewById(R.id.user_gender);
+        arrayAdapter=new ArrayAdapter<String>(SignUp.this, android.R.layout.simple_spinner_dropdown_item,gendertype);
+        gender_spinner.setAdapter(arrayAdapter);
+        gender_spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        //   Toast.makeText(SignUp.this,"You selected"+parent.getItemAtPosition(position),Toast.LENGTH_SHORT).show();
+                       gender= (String) parent.getItemAtPosition(position);
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+        );
+
         final EditText email = findViewById(R.id.emailET);
         final EditText mobile = findViewById(R.id.mobileET);
         final EditText  password = findViewById(R.id.passwordET);
@@ -241,6 +273,9 @@ public class SignUp extends AppCompatActivity {
                                                          intent.putExtra("backendotp", backendotp);
                                                          intent.putExtra("whatToDo", "nothing");
                                                          intent.putExtra("userType", userType);
+                                                         intent.putExtra("gender", gender);
+                                                         intent.putExtra("dateOfBirth", dateOfBirth);
+
 
 
                                                          startActivity(intent);
@@ -274,51 +309,52 @@ public class SignUp extends AppCompatActivity {
                                          Toast.makeText(SignUp.this, "User already exists", Toast.LENGTH_SHORT).show();
 
                                      } else {
-//                                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-//                                                 "+88" + mobile.getText().toString(), 60, TimeUnit.SECONDS, SignUp.this,
-//                                                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//                                                     @Override
-//                                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-//
-//                                                     }
-//
-//                                                     @Override
-//                                                     public void onVerificationFailed(@NonNull FirebaseException e) {
-//                                                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                                                     }
-//
-//                                                     @Override
-//                                                     public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-//
-//
-//
-//                                                               //opening OTP Varification activity along with mobile and Email
-//                                                               Intent intent = new Intent(SignUp.this, OTPVerification.class);
-//                                                               intent.putExtra("mobile", Mobile);
-//                                                               intent.putExtra("email", Email);
-//                                                               intent.putExtra("password", Password);
-//                                                               intent.putExtra("fullname", FullName);
-//                                                               intent.putExtra("backendotp", backendotp);
-//                                                               intent.putExtra("whatToDo", "nothing");
-//                                                               intent.putExtra("userType", userType);
-//
-//
-//                                                               startActivity(intent);
-//
-//
-//                                                     }
-//                                                 }
-//
-//                                         );
+                                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                                 "+88" + mobile.getText().toString(), 60, TimeUnit.SECONDS, SignUp.this,
+                                                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                                                     @Override
+                                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+
+                                                     }
+
+                                                     @Override
+                                                     public void onVerificationFailed(@NonNull FirebaseException e) {
+                                                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                     }
+
+                                                     @Override
+                                                     public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
 
 
-                                         Intent intent = new Intent(SignUp.this, service_specialization.class);
-                                         intent.putExtra("mobile", Mobile);
-                                         intent.putExtra("email",  Email);
-                                         intent.putExtra("password",  Password);
-                                         intent.putExtra("fullname", FullName);
 
-                                         startActivity(intent);
+                                                               //opening OTP Varification activity along with mobile and Email
+                                                               Intent intent = new Intent(SignUp.this, OTPVerification.class);
+                                                               intent.putExtra("mobile", Mobile);
+                                                               intent.putExtra("email", Email);
+                                                               intent.putExtra("password", Password);
+                                                               intent.putExtra("fullname", FullName);
+                                                               intent.putExtra("backendotp", backendotp);
+                                                               intent.putExtra("whatToDo", "nothing");
+                                                               intent.putExtra("userType", userType);
+                                                               intent.putExtra("dateOfBirth", dateOfBirth);
+
+
+                                                               startActivity(intent);
+
+
+                                                     }
+                                                 }
+
+                                         );
+
+//
+//                                         Intent intent = new Intent(SignUp.this, service_specialization.class);
+//                                         intent.putExtra("mobile", Mobile);
+//                                         intent.putExtra("email",  Email);
+//                                         intent.putExtra("password",  Password);
+//                                         intent.putExtra("fullname", FullName);
+//
+//                                         startActivity(intent);
 
                                          final String getMobileTXT = mobile.getText().toString();
                                          final String getEmailTXT = email.getText().toString();
@@ -354,5 +390,81 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+    }
+    private String getTodaysDate()
+    {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return makeDateString(day, month, year);
+    }
+
+    private void initDatePicker()
+    {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
+        {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day)
+            {
+                month = month + 1;
+                String date = makeDateString(day, month, year);
+                dateButton.setText(date);
+                dateOfBirth=date;
+            }
+        };
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        int style = AlertDialog.THEME_HOLO_LIGHT;
+
+        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
+    }
+
+    private String makeDateString(int day, int month, int year)
+    {
+        return getMonthFormat(month) + " " + day + " " + year;
+    }
+
+    private String getMonthFormat(int month)
+    {
+        if(month == 1)
+            return "JAN";
+        if(month == 2)
+            return "FEB";
+        if(month == 3)
+            return "MAR";
+        if(month == 4)
+            return "APR";
+        if(month == 5)
+            return "MAY";
+        if(month == 6)
+            return "JUN";
+        if(month == 7)
+            return "JUL";
+        if(month == 8)
+            return "AUG";
+        if(month == 9)
+            return "SEP";
+        if(month == 10)
+            return "OCT";
+        if(month == 11)
+            return "NOV";
+        if(month == 12)
+            return "DEC";
+
+        //default should never happen
+        return "JAN";
+    }
+
+    public void openDatePicker(View view)
+    {
+        datePickerDialog.show();
     }
 }

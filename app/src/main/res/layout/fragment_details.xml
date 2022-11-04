@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".detailsFragment"
+    android:background="@color/white"
 
     >
     <ScrollView
@@ -37,7 +38,8 @@
             android:text="Candidate Name"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:textColor="#000"/>
+            android:textColor="#000"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,149 +74,234 @@
             android:id="@+id/description"
             android:text="Candidate Description"
             android:textSize="20dp"
-            android:textColor="#000"/>
+            android:textColor="#000"
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                 android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Our Pricing"
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <RadioGroup
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_group_background">
+<RadioButton
+  android:id="@+id/radio1day"
+    style="@style/radioButton"
+    android:text="price for 1 day"
+    android:background="@drawable/radio_on"
+    >
+    >
+
+
+</RadioButton>
+
+                <RadioButton
+                    android:background="@drawable/radio_off"
+                    android:id="@+id/radio1week"
+                    style="@style/radioButton"
+                    android:text="price for 1 week"
+
+                    >
+
+
+                </RadioButton>
+
+
+
+                <RadioButton
+                    android:background="@drawable/radio_off"
+                    android:id="@+id/radio1month"
+                    style="@style/radioButton"
+                    android:text="price for 1 month"
+
+                    >
+
+
+                </RadioButton>
+                <RadioButton
+                    android:background="@drawable/radio_off"
+                    android:id="@+id/radio6month"
+                    style="@style/radioButton"
+                    android:text="price for 6 months"
+
+                    >
+
+
+                </RadioButton>
+            </RadioGroup>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="price is"
+                    android:id="@+id/see">
+
+                </TextView>
+            </LinearLayout>
         </LinearLayout>
 
-     <LinearLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
+<!--     <LinearLayout-->
+<!--         android:layout_width="wrap_content"-->
+<!--         android:layout_height="wrap_content"-->
 
-         android:orientation="vertical"
-
-
-         >
-
-         <TextView
-
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="125dp"
-             android:layout_marginTop="25dp"
-             android:text="Our Pricing"
-             android:textColor="#000"
-             android:textSize="25sp"
-
-             android:textStyle="bold">
-
-         </TextView>
-
-         <LinearLayout
-             android:layout_marginTop="15dp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
+<!--         android:orientation="vertical"-->
 
 
+<!--         >-->
+
+<!--         <TextView-->
+
+<!--             android:layout_width="wrap_content"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:layout_marginLeft="125dp"-->
+<!--             android:layout_marginTop="25dp"-->
+<!--             android:text="Our Pricing"-->
+<!--             android:textColor="#000"-->
+<!--             android:textSize="25sp"-->
+
+<!--             android:textStyle="bold">-->
+
+<!--         </TextView>-->
+
+<!--         <LinearLayout-->
+<!--             android:layout_marginTop="15dp"-->
+<!--             android:layout_width="wrap_content"-->
+<!--             android:layout_height="wrap_content">-->
 
 
-         <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal"
 
-             >
-         <RadioButton
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="For 1 day"
-             android:id="@+id/radio1day"
-             android:textSize="20dp">
 
-         </RadioButton>
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginLeft="5dp"
-                 android:text="price "
-                 android:id="@+id/price1day"
-                 android:textSize="20dp"
-                 android:textColor="@color/black"
-                 >
+<!--         <LinearLayout-->
+<!--             android:layout_width="wrap_content"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:orientation="horizontal"-->
 
-             </TextView>
-         </LinearLayout>
-         <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal"
-             >
-             <RadioButton
-                 android:layout_marginLeft="25sp"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="for 1 week"
-                 android:id="@+id/radio1week"
-                 android:textSize="20dp">
+<!--             >-->
+<!--         <RadioButton-->
+<!--             android:layout_width="wrap_content"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:text="For 1 day"-->
+<!--             android:id="@+id/radio1day"-->
+<!--             android:textSize="20dp">-->
 
-             </RadioButton>
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginLeft="5dp"
-                 android:text="price "
-                 android:id="@+id/price1week"
-                 android:textSize="20dp"
-                 android:textColor="@color/black"
-                 >
+<!--         </RadioButton>-->
+<!--             <TextView-->
+<!--                 android:layout_width="wrap_content"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:layout_marginLeft="5dp"-->
+<!--                 android:text="price "-->
+<!--                 android:id="@+id/price1day"-->
+<!--                 android:textSize="20dp"-->
+<!--                 android:textColor="@color/black"-->
+<!--                 >-->
 
-             </TextView>
-         </LinearLayout>
-         </LinearLayout>
-         <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content">
-         <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal"
-             >
-             <RadioButton
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="for 1 month"
-                 android:id="@+id/radio1month"
-                 android:textSize="20dp">
+<!--             </TextView>-->
+<!--         </LinearLayout>-->
+<!--         <LinearLayout-->
+<!--             android:layout_width="wrap_content"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:orientation="horizontal"-->
+<!--             >-->
+<!--             <RadioButton-->
+<!--                 android:layout_marginLeft="25sp"-->
+<!--                 android:layout_width="wrap_content"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:text="for 1 week"-->
+<!--                 android:id="@+id/radio1week"-->
+<!--                 android:textSize="20dp">-->
 
-             </RadioButton>
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginLeft="5dp"
-                 android:text="price "
-                 android:id="@+id/price1month"
-                 android:textSize="20dp"
-                 android:textColor="@color/black"
-                 >
+<!--             </RadioButton>-->
+<!--             <TextView-->
+<!--                 android:layout_width="wrap_content"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:layout_marginLeft="5dp"-->
+<!--                 android:text="price "-->
+<!--                 android:id="@+id/price1week"-->
+<!--                 android:textSize="20dp"-->
+<!--                 android:textColor="@color/black"-->
+<!--                 >-->
 
-             </TextView>
-         </LinearLayout>
-         <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal"
-             >
-             <RadioButton
-                 android:layout_marginLeft="5sp"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="for 6 months"
-                 android:id="@+id/radio6month"
-                 android:textSize="20dp">
+<!--             </TextView>-->
+<!--         </LinearLayout>-->
+<!--         </LinearLayout>-->
+<!--         <LinearLayout-->
+<!--             android:layout_width="wrap_content"-->
+<!--             android:layout_height="wrap_content">-->
+<!--         <LinearLayout-->
+<!--             android:layout_width="wrap_content"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:orientation="horizontal"-->
+<!--             >-->
+<!--             <RadioButton-->
+<!--                 android:layout_width="wrap_content"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:text="for 1 month"-->
+<!--                 android:id="@+id/radio1month"-->
+<!--                 android:textSize="20dp">-->
 
-             </RadioButton>
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginLeft="5dp"
-                 android:text="price "
-                 android:id="@+id/price6month"
-                 android:textSize="20dp"
-                 android:textColor="@color/black"
-                 >
+<!--             </RadioButton>-->
+<!--             <TextView-->
+<!--                 android:layout_width="wrap_content"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:layout_marginLeft="5dp"-->
+<!--                 android:text="price "-->
+<!--                 android:id="@+id/price1month"-->
+<!--                 android:textSize="20dp"-->
+<!--                 android:textColor="@color/black"-->
+<!--                 >-->
 
-             </TextView>
-         </LinearLayout>
-         </LinearLayout>
-     </LinearLayout>
+<!--             </TextView>-->
+<!--         </LinearLayout>-->
+<!--         <LinearLayout-->
+<!--             android:layout_width="wrap_content"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:orientation="horizontal"-->
+<!--             >-->
+<!--             <RadioButton-->
+<!--                 android:layout_marginLeft="5sp"-->
+<!--                 android:layout_width="wrap_content"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:text="for 6 months"-->
+<!--                 android:id="@+id/radio6month"-->
+<!--                 android:textSize="20dp">-->
+
+<!--             </RadioButton>-->
+<!--             <TextView-->
+<!--                 android:layout_width="wrap_content"-->
+<!--                 android:layout_height="wrap_content"-->
+<!--                 android:layout_marginLeft="5dp"-->
+<!--                 android:text="price "-->
+<!--                 android:id="@+id/price6month"-->
+<!--                 android:textSize="20dp"-->
+<!--                 android:textColor="@color/black"-->
+<!--                 >-->
+
+<!--             </TextView>-->
+<!--         </LinearLayout>-->
+<!--         </LinearLayout>-->
+<!--     </LinearLayout>-->
+
 
 
         <LinearLayout
