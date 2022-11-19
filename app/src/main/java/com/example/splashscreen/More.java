@@ -20,6 +20,7 @@ import java.util.HashMap;
 
 public class More extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class More extends AppCompatActivity {
 
                                 return true;
                             case R.id.orders:
-                                startActivity(new Intent(getApplicationContext(),Orders.class));
+                                startActivity(new Intent(getApplicationContext(),newOrder.class));
                                 overridePendingTransition(0,0);
                                 return true;
                             case R.id.home:
@@ -84,6 +85,15 @@ public class More extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(More.this, customer_profile.class);
+                startActivity(intent);
+            }
+        });
+        // call
+        LinearLayout call = findViewById(R.id.call);
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(More.this, phoneCall.class);
                 startActivity(intent);
             }
         });

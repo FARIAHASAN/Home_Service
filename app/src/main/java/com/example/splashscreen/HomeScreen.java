@@ -67,7 +67,7 @@ public class HomeScreen extends AppCompatActivity {
                           overridePendingTransition(0,0);
                           return true;
                       case R.id.orders:
-                          startActivity(new Intent(getApplicationContext(),Orders.class));
+                          startActivity(new Intent(getApplicationContext(),newOrder.class));
                           overridePendingTransition(0,0);
                           return true;
                       case R.id.home:

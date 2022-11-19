@@ -36,7 +36,7 @@ public class detailsFragment extends Fragment {
      String name,email,mobile,description,image,ServiceType,s1day,s1week,s1month,s6month;
    int price1day,price1week,price1month,price6month,current_service_price=100;
      RadioButton day,week,month1,month6;
-    TextView see;
+
 
     public detailsFragment() {
         // Required empty public constructor
@@ -86,7 +86,7 @@ public class detailsFragment extends Fragment {
         TextView mobileHolder=view.findViewById(R.id.mobile);
         TextView emailHolder=view.findViewById(R.id.email);
         TextView descriptionHolder=view.findViewById(R.id.description);
-         see=view.findViewById(R.id.see);
+//         see=view.findViewById(R.id.see);
 
        LinearLayout Purchase = view.findViewById(R.id.purchase);
         Purchase.setOnClickListener(new View.OnClickListener() {
@@ -157,7 +157,7 @@ public class detailsFragment extends Fragment {
             price6month=20000;
             //convert to string
             s1day= Integer.toString(price1day);
-            see.setText( "Current price:  "+s1day);
+            //see.setText( "Current price:  "+s1day);
             s1week= Integer.toString(price1week);
             s1month= Integer.toString(price1month);;
             s6month=Integer.toString(price6month);;
@@ -183,7 +183,7 @@ public class detailsFragment extends Fragment {
             price6month=75000;
             //convert to string
             s1day= Integer.toString(price1day);
-            see.setText( "Current price:  "+s1day);
+            //see.setText( "Current price:  "+s1day);
             s1week= Integer.toString(price1week);
             s1month= Integer.toString(price1month);;
             s6month=Integer.toString(price6month);;
@@ -204,7 +204,7 @@ public class detailsFragment extends Fragment {
             price1month=20000;
             price6month=75000;
             s1day= Integer.toString(price1day);
-            see.setText( "Current price:  "+s1day);
+            //see.setText( "Current price:  "+s1day);
             s1week= Integer.toString(price1week);
             s1month= Integer.toString(price1month);;
             s6month=Integer.toString(price6month);;
@@ -226,7 +226,7 @@ public class detailsFragment extends Fragment {
             price6month=75000;
             //convert to string
             s1day= Integer.toString(price1day);
-            see.setText( "Current price:  "+s1day);
+            //see.setText( "Current price:  "+s1day);
             s1week= Integer.toString(price1week);
             s1month= Integer.toString(price1month);;
             s6month=Integer.toString(price6month);;
@@ -248,7 +248,7 @@ public class detailsFragment extends Fragment {
             price6month=75000;
             //convert to string
             s1day= Integer.toString(price1day);
-            see.setText( "Current price:  "+s1day);
+            //see.setText( "Current price:  "+s1day);
             s1week= Integer.toString(price1week);
             s1month= Integer.toString(price1month);;
             s6month=Integer.toString(price6month);;
@@ -270,7 +270,7 @@ public class detailsFragment extends Fragment {
             price6month=75000;
             //convert to string
             s1day= Integer.toString(price1day);
-            see.setText( "Current price:  "+s1day);
+            //see.setText( "Current price:  "+s1day);
             s1week= Integer.toString(price1week);
             s1month= Integer.toString(price1month);;
             s6month=Integer.toString(price6month);;
@@ -292,7 +292,7 @@ public class detailsFragment extends Fragment {
             price6month=75000;
             //convert to string
             s1day= Integer.toString(price1day);
-            see.setText( "Current price:  "+s1day);
+            //see.setText( "Current price:  "+s1day);
             s1week= Integer.toString(price1week);
             s1month= Integer.toString(price1month);;
             s6month=Integer.toString(price6month);;

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class Orders extends AppCompatActivity {
+public class newOrder extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     RecyclerView recyclerView;
     String name;
@@ -23,9 +24,10 @@ public class Orders extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders);
-
-        //BOTTOM MENU
+        setContentView(R.layout.activity_new_order);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+       // BOTTOM MENU
 
         bottomNavigationView=findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.orders);
@@ -53,7 +55,22 @@ public class Orders extends AppCompatActivity {
         );
 
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.orwrapper,new order_fragment()).commit();
+       getSupportFragmentManager().beginTransaction().replace(R.id.orwrapper,new fragmentNewOrder()).commit();
+
+
+//        //session value
+//        SessionManager sessionManager = new SessionManager(this);
+//        HashMap<String,String> userDetails=sessionManager.getUserInfo();
+//        name=SessionManager.KEY_NAME;
+//        //recycleview
+//        recyclerView=findViewById(R.id.recycleview);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        FirebaseRecyclerOptions<orderModel> options =
+//                new FirebaseRecyclerOptions.Builder<orderModel>()
+//                        .setQuery(FirebaseDatabase.getInstance().getReference().child("orders").orderByChild("Customer_name").equalTo(name), orderModel.class)
+//                        .build();
+//        adapter= new myorderadapter(options);
+//        recyclerView.setAdapter(adapter);
 
     }
 

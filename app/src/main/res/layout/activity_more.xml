@@ -110,7 +110,7 @@
 
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:background="#d1cfcf"
+                            android:background="#5f5C5C"
                             android:src="@drawable/ic_baseline_face_24">
 
                         </ImageView>
@@ -125,9 +125,10 @@
                         android:text="Your profile"
                         android:textSize="18dp"
                         android:layout_width="fill_parent"
-
+                        android:layout_marginTop="5dp"
+                       android:textColor="@color/black"
                         android:layout_weight="0.9"
-                        android:textStyle="bold">
+                      >
 
                     </TextView>
 
@@ -135,6 +136,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
 
 
 
@@ -172,7 +174,7 @@
                         <ImageView
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:src="@drawable/ic_baseline_featured_play_list_24">
+                            android:src="@drawable/ic_baseline_featured_play_list_24_1">
 
                         </ImageView>
 
@@ -187,7 +189,8 @@
                         android:layout_marginLeft="5dp"
                         android:text="Your Orders "
                         android:textSize="18dp"
-                        android:textStyle="bold">
+                        android:textColor="@color/black"
+                       >
 
                     </TextView>
 
@@ -208,7 +211,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+
+                >
 
                 <LinearLayout
                     android:id="@+id/call"
@@ -229,7 +234,7 @@
                         <ImageView
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:src="@drawable/ic_baseline_featured_play_list_24">
+                            android:src="@drawable/ic_baseline_perm_phone_msg_24_1">
 
                         </ImageView>
 
@@ -243,8 +248,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="Let's Call"
+                        android:textColor="@color/black"
                         android:textSize="18dp"
-                        android:textStyle="bold">
+                     >
 
                     </TextView>
 
@@ -286,7 +292,7 @@
                         <ImageView
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:src="@drawable/ic_baseline_featured_play_list_24">
+                            android:src="@drawable/ic_baseline_error_24">
 
                         </ImageView>
 
@@ -300,8 +306,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="Privacy and Policy"
+                        android:textColor="@color/black"
                         android:textSize="18dp"
-                        android:textStyle="bold">
+                       >
 
                     </TextView>
 
@@ -347,7 +354,7 @@
                         <ImageView
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:src="@drawable/ic_baseline_featured_play_list_24">
+                            android:src="@drawable/ic_baseline_check_circle_24">
 
                         </ImageView>
 
@@ -361,8 +368,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="Terms and Condition"
+                        android:textColor="@color/black"
                         android:textSize="18dp"
-                        android:textStyle="bold">
+                       >
 
                     </TextView>
 
@@ -370,6 +378,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginRight="10dp"
+                        android:textColor="@color/black"
                         android:src="@drawable/ic_baseline_arrow_forward_ios_24">
 
                     </ImageView>
@@ -405,23 +414,16 @@
     </LinearLayout>
 
 
-
-
-
-
-
-
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:layout_alignParentBottom="true"
         app:itemBackground="@color/purple_500"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/manu_layout"
-        android:layout_alignParentBottom="true"
 
 
         />
